@@ -60,17 +60,15 @@ const RaceCard = props => {
   return (
     <div className='py-4 w-5/6 max-w-xs flex-shrink-0 px-2' onClick={() => setSelectedRace(name)}>
       <div
-        className={`relative h-64 overflow-y-hidden shadow-md rounded border-t-4 ${
+        className={`relative h-64 bg-white overflow-y-hidden shadow-md rounded border-t-4 ${
           raceClassMap[name.toLowerCase()].border
-        }`}
-      >
+        }`}>
         <img className='mx-auto object-contain bg-white rounded-lg' src={`./images/${imageSrc}`} alt={imageAlt} />
         {selectedRace === name && (
           <span
             className={`absolute top-0 right-0 mr-6 text-4xl p-2 rounded rounded-t-none shadow-xl text-white ${
               raceClassMap[name.toLowerCase()].background
-            } `}
-          >
+            } `}>
             {"\u2713"}
           </span>
         )}
@@ -80,15 +78,13 @@ const RaceCard = props => {
         className={`relative uppercase font-bold tracking-widest border-t-4
         shadow-lg text-xl mx-auto -mt-8 w-2/3 py-4 text-center bg-white rounded
         ${raceClassMap[name.toLowerCase()].text} ${raceClassMap[name.toLowerCase()].border}
-        `}
-      >
+        `}>
         {name}
       </h3>
       <div
         className={`max-h-screen overflow-y-auto bg-white p-8 pt-0 rounded mt-4 shadow-md border-t-4 ${
           raceClassMap[name.toLowerCase()].border
-        }`}
-      >
+        }`}>
         {features.map((feature, index) => {
           return (
             <React.Fragment key={index}>

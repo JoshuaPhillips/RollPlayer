@@ -494,5 +494,404 @@
         }
       ]
     }
+  ],
+  "classes": [
+    {
+      "name": "Barbarian",
+      "imageSrc": "classes_barbarian.png",
+      "hitDice": 12,
+      "proficiencies": [
+        { "name": "Armor", "proficiencies": ["Light Armor", "Medium Armor", "Shields"] },
+        { "name": "Weapons", "proficiencies": ["Simple weapons", "Martial weapons"] },
+        { "name": "Tools", "proficiencies": [] },
+        { "name": "Saving Throws", "proficiencies": ["Strength", "Constitution"] },
+        { "name": "Skills", "proficiencies": [] },
+        {
+          "name": "Skill Choices",
+          "proficiencies": {
+            "numChoices": 2,
+            "choices": ["Animal Handling", "Athletics", "Intimidation", "Nature", "Perception", "Survival"]
+          }
+        }
+      ],
+      "equipment": ["Explorer's Pack", "4 Javelins"],
+      "equipmentChoices": [
+        {
+          "numChoices": 1,
+          "choices": ["Greataxe", "any martial melee weapon"]
+        },
+        {
+          "numChoices": 1,
+          "choices": ["2 Handaxes", "any simple melee weapon"]
+        }
+      ],
+      "subClass": "Primal Path",
+      "features": [
+        "Rage",
+        "Unarmoured Defence",
+        "Danger Sense",
+        "Ability Score Improvement",
+        "Extra Attack",
+        "Fast Movement",
+        "Feral Instinct",
+        "Brutal Critical",
+        "Relentless Rage",
+        "Persistent Rage",
+        "Indomitable Might",
+        "Primal Champion"
+      ]
+    },
+    {
+      "name": "Bard",
+      "imageSrc": "classes_bard.png",
+      "hitDice": 12,
+      "proficiencies": [
+        { "name": "Armor", "proficiencies": [] },
+        { "name": "Weapon", "proficiencies": [] },
+        { "name": "Tool", "proficiencies": [] },
+        { "name": "Saving Throw", "proficiencies": [] },
+        { "name": "Skill", "proficiencies": [] },
+        {
+          "name": "Skill Choices",
+          "proficiencies": {
+            "numChoices": 2,
+            "choices": []
+          }
+        }
+      ],
+      "equipment": [],
+      "equipmentChoices": [
+        {
+          "numChoices": 1,
+          "choices": []
+        },
+        {
+          "numChoices": 1,
+          "choices": []
+        }
+      ],
+      "subClass": "",
+      "features": []
+    },
+    {
+      "name": "Cleric",
+      "imageSrc": "classes_cleric.png",
+      "hitDice": 12,
+      "proficiencies": [
+        { "name": "Armor", "proficiencies": [] },
+        { "name": "Weapons", "proficiencies": [] },
+        { "name": "Tools", "proficiencies": [] },
+        { "name": "Saving Throws", "proficiencies": [] },
+        { "name": "Skills", "proficiencies": [] },
+        {
+          "name": "Skill Choices",
+          "proficiencies": {
+            "numChoices": 2,
+            "choices": []
+          }
+        }
+      ],
+      "equipment": [],
+      "equipmentChoices": [
+        {
+          "numChoices": 1,
+          "choices": []
+        },
+        {
+          "numChoices": 1,
+          "choices": []
+        }
+      ],
+      "subClass": "",
+      "features": []
+    },
+    {
+      "name": "Druid",
+      "imageSrc": "classes_druid.png",
+      "hitDice": 12,
+      "proficiencies": [
+        { "name": "Armor", "proficiencies": [] },
+        { "name": "Weapons", "proficiencies": [] },
+        { "name": "Tools", "proficiencies": [] },
+        { "name": "Saving Throws", "proficiencies": [] },
+        { "name": "Skills", "proficiencies": [] },
+        {
+          "name": "Skill Choices",
+          "proficiencies": {
+            "numChoices": 2,
+            "choices": []
+          }
+        }
+      ],
+      "equipment": [],
+      "equipmentChoices": [
+        {
+          "numChoices": 1,
+          "choices": []
+        },
+        {
+          "numChoices": 1,
+          "choices": []
+        }
+      ],
+      "subClass": "",
+      "features": []
+    },
+    {
+      "name": "Fighter",
+      "imageSrc": "classes_fighter.png",
+      "hitDice": 12,
+      "proficiencies": [
+        { "name": "Armor", "proficiencies": [] },
+        { "name": "Weapons", "proficiencies": [] },
+        { "name": "Tools", "proficiencies": [] },
+        { "name": "Saving Throws", "proficiencies": [] },
+        { "name": "Skills", "proficiencies": [] },
+        {
+          "name": "Skill Choices",
+          "proficiencies": {
+            "numChoices": 2,
+            "choices": []
+          }
+        }
+      ],
+      "equipment": [],
+      "equipmentChoices": [
+        {
+          "numChoices": 1,
+          "choices": []
+        },
+        {
+          "numChoices": 1,
+          "choices": []
+        }
+      ],
+      "subClass": "",
+      "features": []
+    },
+    {
+      "name": "Monk",
+      "imageSrc": "classes_monk.png",
+      "hitDice": 12,
+      "proficiencies": [
+        { "name": "Armor", "proficiencies": [] },
+        { "name": "Weapons", "proficiencies": [] },
+        { "name": "Tools", "proficiencies": [] },
+        { "name": "Saving Throws", "proficiencies": [] },
+        { "name": "Skills", "proficiencies": [] },
+        {
+          "name": "Skill Choices",
+          "proficiencies": {
+            "numChoices": 2,
+            "choices": []
+          }
+        }
+      ],
+      "equipment": [],
+      "equipmentChoices": [
+        {
+          "numChoices": 1,
+          "choices": []
+        },
+        {
+          "numChoices": 1,
+          "choices": []
+        }
+      ],
+      "subClass": "",
+      "features": []
+    },
+    {
+      "name": "Paladin",
+      "imageSrc": "classes_paladin.png",
+      "hitDice": 12,
+      "proficiencies": [
+        { "name": "Armor", "proficiencies": [] },
+        { "name": "Weapons", "proficiencies": [] },
+        { "name": "Tools", "proficiencies": [] },
+        { "name": "Saving Throws", "proficiencies": [] },
+        { "name": "Skills", "proficiencies": [] },
+        {
+          "name": "Skill Choices",
+          "proficiencies": {
+            "numChoices": 2,
+            "choices": []
+          }
+        }
+      ],
+      "equipment": [],
+      "equipmentChoices": [
+        {
+          "numChoices": 1,
+          "choices": []
+        },
+        {
+          "numChoices": 1,
+          "choices": []
+        }
+      ],
+      "subClass": "",
+      "features": []
+    },
+    {
+      "name": "Ranger",
+      "imageSrc": "classes_ranger.png",
+      "hitDice": 12,
+      "proficiencies": [
+        { "name": "Armor", "proficiencies": [] },
+        { "name": "Weapons", "proficiencies": [] },
+        { "name": "Tools", "proficiencies": [] },
+        { "name": "Saving Throws", "proficiencies": [] },
+        { "name": "Skills", "proficiencies": [] },
+        {
+          "name": "Skill Choices",
+          "proficiencies": {
+            "numChoices": 2,
+            "choices": []
+          }
+        }
+      ],
+      "equipment": [],
+      "equipmentChoices": [
+        {
+          "numChoices": 1,
+          "choices": []
+        },
+        {
+          "numChoices": 1,
+          "choices": []
+        }
+      ],
+      "subClass": "",
+      "features": []
+    },
+    {
+      "name": "Rogue",
+      "imageSrc": "classes_rogue.png",
+      "hitDice": 12,
+      "proficiencies": [
+        { "name": "Armor", "proficiencies": [] },
+        { "name": "Weapons", "proficiencies": [] },
+        { "name": "Tools", "proficiencies": [] },
+        { "name": "Saving Throws", "proficiencies": [] },
+        { "name": "Skills", "proficiencies": [] },
+        {
+          "name": "Skill Choices",
+          "proficiencies": {
+            "numChoices": 2,
+            "choices": []
+          }
+        }
+      ],
+      "equipment": [],
+      "equipmentChoices": [
+        {
+          "numChoices": 1,
+          "choices": []
+        },
+        {
+          "numChoices": 1,
+          "choices": []
+        }
+      ],
+      "subClass": "",
+      "features": []
+    },
+    {
+      "name": "Sorcerer",
+      "imageSrc": "classes_sorcerer.png",
+      "hitDice": 12,
+      "proficiencies": [
+        { "name": "Armor", "proficiencies": [] },
+        { "name": "Weapons", "proficiencies": [] },
+        { "name": "Tools", "proficiencies": [] },
+        { "name": "Saving Throws", "proficiencies": [] },
+        { "name": "Skills", "proficiencies": [] },
+        {
+          "name": "Skill Choices",
+          "proficiencies": {
+            "numChoices": 2,
+            "choices": []
+          }
+        }
+      ],
+      "equipment": [],
+      "equipmentChoices": [
+        {
+          "numChoices": 1,
+          "choices": []
+        },
+        {
+          "numChoices": 1,
+          "choices": []
+        }
+      ],
+      "subClass": "",
+      "features": []
+    },
+    {
+      "name": "Warlock",
+      "imageSrc": "classes_warlock.png",
+      "hitDice": 12,
+      "proficiencies": [
+        { "name": "Armor", "proficiencies": [] },
+        { "name": "Weapons", "proficiencies": [] },
+        { "name": "Tools", "proficiencies": [] },
+        { "name": "Saving Throws", "proficiencies": [] },
+        { "name": "Skills", "proficiencies": [] },
+        {
+          "name": "Skill Choices",
+          "proficiencies": {
+            "numChoices": 2,
+            "choices": []
+          }
+        }
+      ],
+      "equipment": [],
+      "equipmentChoices": [
+        {
+          "numChoices": 1,
+          "choices": []
+        },
+        {
+          "numChoices": 1,
+          "choices": []
+        }
+      ],
+      "subClass": "",
+      "features": []
+    },
+    {
+      "name": "Wizard",
+      "imageSrc": "classes_wizard.png",
+      "hitDice": 12,
+      "proficiencies": [
+        { "name": "Armor", "proficiencies": [] },
+        { "name": "Weapons", "proficiencies": [] },
+        { "name": "Tools", "proficiencies": [] },
+        { "name": "Saving Throws", "proficiencies": [] },
+        { "name": "Skills", "proficiencies": [] },
+        {
+          "name": "Skill Choices",
+          "proficiencies": {
+            "numChoices": 2,
+            "choices": []
+          }
+        }
+      ],
+      "equipment": [],
+      "equipmentChoices": [
+        {
+          "numChoices": 1,
+          "choices": []
+        },
+        {
+          "numChoices": 1,
+          "choices": []
+        }
+      ],
+      "subClass": "",
+      "features": []
+    }
   ]
 }

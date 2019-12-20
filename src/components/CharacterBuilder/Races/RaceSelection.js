@@ -1,14 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import RaceCard from "./RaceCard";
+import { CharacterBuilderContext } from "../index";
 
 import data from "../../../data.json";
 
-const RaceSelection = () => {
+const RaceSelection = props => {
   const [showSectionHelp, toggleSectionHelp] = useState(false);
   const [selectedRace, setSelectedRace] = useState(null);
+  const { toggleCanContinue, currentStage } = useContext(CharacterBuilderContext);
+
+  const { sectionRef } = props;
+
+  useEffect(() => {
+    if (selectedRace !== null) toggleCanContinue(true);
+  }, [toggleCanContinue, selectedRace]);
 
   return (
-    <section className='pb-10 bg-gray-100'>
+    <section className={`pb-10 bg-gray-100 ${currentStage >= 0 ? "block" : "hidden"}`} ref={sectionRef}>
       <div className='flex flex-wrap justify-between py-6 px-4 font-semibold bg-gray-800 text-gray-400'>
         <h2 className='uppercase tracking-widest'>1. Choose a race</h2>
         <button className='tracking-wide outline-none' onClick={() => toggleSectionHelp(!showSectionHelp)}>
@@ -45,11 +53,6 @@ const RaceSelection = () => {
           })}
         </div>
       </div>
-      {selectedRace && (
-        <div className='fixed bottom-0 left-0 right-0 text-center text-lg bg-blue-900 text-white'>
-          <button className='w-full h-full py-4 outline-none uppercase tracking-widest font-bold'>Continue</button>
-        </div>
-      )}
     </section>
   );
 };

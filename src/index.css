@@ -8346,6 +8346,10 @@ video {
   z-index: auto;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 @media (min-width: 640px) {
   .sm\:sr-only {
     position: absolute;

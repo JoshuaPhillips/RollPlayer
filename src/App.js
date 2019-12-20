@@ -1,6 +1,5 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-
 import LandingPage from "./components/LandingPage";
 import CharacterBuilder from "./components/CharacterBuilder";
 
