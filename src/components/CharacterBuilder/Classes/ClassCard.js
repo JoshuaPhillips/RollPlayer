@@ -147,10 +147,10 @@ const ClassCard = props => {
 
           <ClassCardSection title='Proficiencies' borderColor={borderColor} customClasses='pb-8'>
             <div className='py-6'>
-              {proficiencies.map(({ name, proficiencies }) => {
+              {proficiencies.map(({ name, proficiencies }, index) => {
                 return proficiencies.length === 0 ? null : name === "Skill Choices" ? (
                   proficiencies.choices.length === 0 ? null : (
-                    <StatEntry title='Additional Skills'>
+                    <StatEntry key={index} title='Additional Skills'>
                       <p>
                         Choose {proficiencies.numChoices} from{" "}
                         {[...proficiencies.choices.slice(0, proficiencies.choices.length - 1)].join(", ")} or{" "}
@@ -159,7 +159,7 @@ const ClassCard = props => {
                     </StatEntry>
                   )
                 ) : (
-                  <StatEntry title={name}>
+                  <StatEntry key={index} title={name}>
                     <p>{proficiencies.join(", ")}</p>
                   </StatEntry>
                 );
@@ -172,9 +172,9 @@ const ClassCard = props => {
               <ul className='list-disc ml-8'>
                 <li>{equipment.join(", ")}</li>
                 {equipmentChoices.length !== 0 &&
-                  equipmentChoices.map(({ choices }) => {
+                  equipmentChoices.map(({ choices }, index) => {
                     return (
-                      <li>
+                      <li key={index}>
                         {[...choices.slice(0, choices.length - 1)].join(", ")}, or {choices[choices.length - 1]}
                       </li>
                     );
@@ -188,7 +188,8 @@ const ClassCard = props => {
               {features.map((feature, index) => {
                 return (
                   <React.Fragment key={index}>
-                    <div className={`p-4 flex justify-between cursor-pointer hover:bg-gray-200`}>
+                    <div
+                      className={`p-4 flex justify-between cursor-pointer border-t border-gray-100 hover:bg-gray-200`}>
                       <h4 className={`text-lg font-semibold `}>{feature}</h4>
                       <span className='mr-2 font-semibold'>></span>
                     </div>
