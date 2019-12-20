@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { CharacterBuilderContext } from "../index";
-import ClassCard from "../Classes/ClassCard";
+import ClassCard from "./ClassCard";
 
 import data from "../../../data.json";
 

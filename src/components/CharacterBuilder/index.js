@@ -1,12 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
-import RaceSelection from "./Races/RaceSelection";
-import ClassSelection from "./Classes/ClassSelection";
-import AbilityScoreSelection from "./AbilityScoreSelection";
-import BackgroundSelection from "./BackgroundSelection";
+import RaceSelection from "./Races";
+import ClassSelection from "./Classes";
+import AbilityScoreSelection from "./AbilityScores";
+import BackgroundSelection from "./Backgrounds";
 export const CharacterBuilderContext = React.createContext();
 
 const CharacterBuilder = () => {
-  const [currentStage, setCurrentStage] = useState(1);
+  const [currentStage, setCurrentStage] = useState(0);
   const [canContinue, toggleCanContinue] = useState(false);
 
   const raceRef = useRef(null);
