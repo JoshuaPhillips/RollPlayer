@@ -26,7 +26,7 @@ const CharacterBuilder = () => {
 
   return (
     <CharacterBuilderContext.Provider value={{ toggleCanContinue, currentStage }}>
-      <main>
+      <main className='bg-gray-100'>
         <RaceSelection sectionRef={raceRef} />
         <ClassSelection sectionRef={classRef} />
         <AbilityScoreSelection sectionRef={abilityScoreRef} />

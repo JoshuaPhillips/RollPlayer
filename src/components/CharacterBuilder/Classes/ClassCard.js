@@ -79,9 +79,8 @@ const ClassCardSection = props => {
   const { title, children, borderColor, customClasses } = props;
 
   return (
-    <div className={`border-t-4 ${borderColor} rounded shadow-md bg-white ${customClasses}`}>
-      <div
-        className={`relative bg-white py-2 rounded text-center shadow-lg ml-2 -mt-6 w-1/2 uppercase border-t-4 ${borderColor}`}>
+    <div className={`panel ${borderColor} ${customClasses}`}>
+      <div className={`panel relative py-2 text-center shadow-lg ml-2 -mt-6 w-1/2 uppercase ${borderColor}`}>
         <h4 className='font-semibold tracking-wide'>{title}</h4>
       </div>
 
@@ -102,7 +101,7 @@ const ClassCard = props => {
   return (
     <div className={`py-4 w-screen max-w-xs flex-shrink-0 px-2 ${textColor}`}>
       <div
-        className={`relative h-64 bg-white overflow-y-hidden shadow-md rounded border-t-4 cursor-pointer ${borderColor}`}
+        className={`panel relative h-64 overflow-y-hidden cursor-pointer ${borderColor}`}
         onClick={() => setSelectedClass(name)}>
         <img className='mx-auto object-contain bg-white rounded-lg' src={`./images/${imageSrc}`} alt={imageAlt} />
         {selectedClass === name && (
@@ -114,13 +113,13 @@ const ClassCard = props => {
       </div>
 
       <h3
-        className={`relative uppercase font-bold tracking-widest border-t-4
-        shadow-lg text-xl mx-auto -mt-8 w-2/3 py-4 text-center bg-white rounded ${borderColor}`}>
+        className={`panel relative uppercase font-bold tracking-widest 
+        shadow-lg text-xl mx-auto -mt-8 w-2/3 py-4 text-center ${borderColor}`}>
         {name}
       </h3>
 
       <div
-        className={`my-6 w-3/4 p-2 mx-auto text-center rounded-full text-white font-semibold bg-white shadow-md ${backgroundColor} ${borderColor}`}>
+        className={`my-6 w-3/4 p-2 mx-auto text-center rounded-full text-white font-semibold shadow-md ${backgroundColor} ${borderColor}`}>
         <h4>Subclass: {subClass}</h4>
       </div>
 
