@@ -45,20 +45,20 @@ const AbilityScoreAssignmentPanel = props => {
   return (
     <>
       {unassignedScores.length !== 0 && (
-        <div className='panel mt-6 mx-auto w-3/4 border-gray-900 flex overflow-x-hidden'>
+        <div className='panel mt-6 mx-6 border-gray-900 flex overflow-x-hidden'>
           {unassignedScores.map(ability => {
             return (
               <div key={ability} className='w-full flex-shrink-0'>
-                <p className='pt-4 text-center font-semibold uppercase text-sm tracking-widest'>
+                <p className='py-4 text-center font-semibold uppercase text-sm tracking-widest border-b border-gray-200'>
                   Select {ability.toUpperCase()} score
                 </p>
-                <div className='text-center p-4'>
+                <div className='text-center'>
                   {abilityScores.map((score, index) => {
                     return (
                       <button
                         key={index}
                         onClick={() => assignAbilityScore(ability, score, index)}
-                        className='w-1/6 font-semibold border-gray-900 py-2 px-1'>
+                        className='w-1/6 font-semibold py-4 hover:bg-gray-200'>
                         {score}
                       </button>
                     );
@@ -70,14 +70,14 @@ const AbilityScoreAssignmentPanel = props => {
         </div>
       )}
       {assignedScores.length !== 0 && (
-        <div className='panel mt-6 pb-4  mx-auto w-3/4 border-gray-900'>
+        <div className='panel mt-6 pb-4 mx-5 border-gray-900'>
           {Object.keys(abilityScoreAssignments)
             .filter(ability => abilityScoreAssignments[ability] !== null)
             .map(ability => {
               return (
                 <div key={ability} className='flex justify-between items-center p-4 border-b border-gray-100'>
-                  <p className='w-1/2 font-semibold'>{ability.toUpperCase()}</p>
-                  <p className='w-1/4 text-right'>{abilityScoreAssignments[ability]}</p>
+                  <p className='w-1/2 font-semibold uppercase tracking-widest'>{ability}</p>
+                  <p className='w-1/4 text-right font-bold'>{abilityScoreAssignments[ability]}</p>
                   <p className='w-1/4 text-right' onClick={() => unassignAbilityScore(ability)}>
                     X
                   </p>

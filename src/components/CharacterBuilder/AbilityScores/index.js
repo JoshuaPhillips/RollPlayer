@@ -3,23 +3,26 @@ import { CharacterBuilderContext } from "../index";
 import SectionHeader from "../shared/SectionHeader";
 import RandomArrayAssignmentPanel from "./RandomArrayAssignmentPanel";
 import StandardArrayAssignmentPanel from "./StandardArrayAssignmentPanel";
+import PointBuyAssignmentPanel from "./PointBuyAssignmentPanel";
+import CustomAssignmentPanel from "./CustomAssignmentPanel";
 
 const AbilityScoreSelection = props => {
   const { sectionRef } = props;
-  const [selectedScoreCalculationMethod, setSelectedScoreCalculationMethod] = useState(null);
+  const [selectedScoreCalculationMethod, setSelectedScoreCalculationMethod] = useState("custom");
   const { currentStage } = useContext(CharacterBuilderContext);
 
   const ScoreSelectionMethodOption = props => {
     const { methodId, methodName, className } = props;
 
+    const methodSelected = selectedScoreCalculationMethod === methodId;
+
     return (
       <div
-        className={`flex justify-between items-center px-4 hover:bg-gray-200 ${className}`}
+        className={`flex justify-between items-center px-4 hover:bg-gray-200 ${className} ${methodSelected &&
+          "bg-gray-200"}`}
         onClick={() => setSelectedScoreCalculationMethod(methodId)}>
         <p className='px-2 py-4 font-semibold'>{methodName}</p>
-        <span className={`text-xl font-bold ${selectedScoreCalculationMethod === methodId ? "inline" : "hidden"}`}>
-          {"\u2713"}
-        </span>
+        <span className={`text-xl font-bold ${methodSelected ? "inline" : "hidden"}`}>{"\u2713"}</span>
       </div>
     );
   };
@@ -45,7 +48,7 @@ const AbilityScoreSelection = props => {
           <h2 className='pt-6 mx-6 font-semibold uppercase tracking-wide text-sm'>
             A. How do you want to calculate your Ability Scores?
           </h2>
-          <div className='panel w-3/4 mx-auto border-gray-800 mt-6 cursor-pointer'>
+          <div className='panel mt-6 mx-6 border-gray-800 cursor-pointer'>
             <ScoreSelectionMethodOption methodId={"standard"} methodName='Standard Array' />
             <ScoreSelectionMethodOption methodId={"random"} methodName='Random Array' />
             <ScoreSelectionMethodOption methodId={"pointBuy"} methodName='Point Buy' />
@@ -53,14 +56,18 @@ const AbilityScoreSelection = props => {
           </div>
         </div>
 
-        <div className={`${selectedScoreCalculationMethod ? "block" : "hidden"}`}>
-          <h2 className='pt-6 mx-6 font-semibold uppercase tracking-wide text-sm'>
-            B. Assign your scores to each of your characer's attributes.
-          </h2>
+        {selectedScoreCalculationMethod !== null && (
+          <div className={`${selectedScoreCalculationMethod ? "block" : "hidden"}`}>
+            <h2 className='pt-6 mx-6 font-semibold uppercase tracking-wide text-sm'>
+              B. Assign your scores to each of your character's attributes.
+            </h2>
 
-          {selectedScoreCalculationMethod === "random" && <RandomArrayAssignmentPanel />}
-          {selectedScoreCalculationMethod === "standard" && <StandardArrayAssignmentPanel />}
-        </div>
+            {selectedScoreCalculationMethod === "random" && <RandomArrayAssignmentPanel />}
+            {selectedScoreCalculationMethod === "standard" && <StandardArrayAssignmentPanel />}
+            {selectedScoreCalculationMethod === "pointBuy" && <PointBuyAssignmentPanel />}
+            {selectedScoreCalculationMethod === "custom" && <CustomAssignmentPanel />}
+          </div>
+        )}
       </div>
     </section>
   );

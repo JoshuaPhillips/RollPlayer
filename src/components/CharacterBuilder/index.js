@@ -6,7 +6,7 @@ import BackgroundSelection from "./Backgrounds";
 export const CharacterBuilderContext = React.createContext();
 
 const CharacterBuilder = () => {
-  const [currentStage, setCurrentStage] = useState(0);
+  const [currentStage, setCurrentStage] = useState(2);
   const [canContinue, toggleCanContinue] = useState(false);
 
   const raceRef = useRef(null);
