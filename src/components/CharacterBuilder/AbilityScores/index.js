@@ -1,16 +1,14 @@
-import React, { useState, useContext } from "react";
-import { CharacterBuilderContext } from "../index";
+import React, { useState, useEffect } from "react";
 import SectionHeader from "../shared/SectionHeader";
 import RandomArrayAssignmentPanel from "./RandomArrayAssignmentPanel";
 import StandardArrayAssignmentPanel from "./StandardArrayAssignmentPanel";
 import PointBuyAssignmentPanel from "./PointBuyAssignmentPanel";
 import CustomAssignmentPanel from "./CustomAssignmentPanel";
+import { connect } from "react-redux";
 
 const AbilityScoreSelection = props => {
-  const { sectionRef } = props;
-  const [selectedScoreCalculationMethod, setSelectedScoreCalculationMethod] = useState("standard");
-
-  const { currentStage } = useContext(CharacterBuilderContext);
+  const { setAbilityScoreAssignments, setCanContinue } = props;
+  const [selectedScoreCalculationMethod, setSelectedScoreCalculationMethod] = useState(null);
 
   const ScoreSelectionMethodOption = props => {
     const { methodId, methodName, className } = props;
@@ -28,8 +26,48 @@ const AbilityScoreSelection = props => {
     );
   };
 
+  useEffect(() => {
+    switch (selectedScoreCalculationMethod) {
+      case "pointBuy":
+        setAbilityScoreAssignments({
+          strength: 8,
+          dexterity: 8,
+          constitution: 8,
+          intelligence: 8,
+          wisdom: 8,
+          charisma: 8
+        });
+        setCanContinue(false);
+        break;
+
+      case "custom":
+        setAbilityScoreAssignments({
+          strength: 10,
+          dexterity: 10,
+          constitution: 10,
+          intelligence: 10,
+          wisdom: 10,
+          charisma: 10
+        });
+        setCanContinue(true);
+        break;
+
+      default:
+        setAbilityScoreAssignments({
+          strength: null,
+          dexterity: null,
+          constitution: null,
+          intelligence: null,
+          wisdom: null,
+          charisma: null
+        });
+        setCanContinue(false);
+        break;
+    }
+  }, [setCanContinue, selectedScoreCalculationMethod, setAbilityScoreAssignments]);
+
   return (
-    <section className={`${currentStage >= 2 ? "block" : "hidden"}`} ref={sectionRef}>
+    <section className='pb-10'>
       <SectionHeader title='3. Ability Scores'>
         <p className='px-4'>
           Much of what your character does in the game depends on their abilities: <strong>Strength</strong>,{" "}
@@ -74,4 +112,20 @@ const AbilityScoreSelection = props => {
   );
 };
 
-export default AbilityScoreSelection;
+const mapStateToProps = state => {
+  const { currentBuildStage } = state.characterBuilder;
+
+  return {
+    currentBuildStage
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setAbilityScoreAssignments: assignments =>
+      dispatch({ type: "SET_ABILITY_SCORE_ASSIGNMENTS", payload: { assignments } }),
+    setCanContinue: value => dispatch({ type: "SET_CAN_CONTINUE", payload: { value } })
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AbilityScoreSelection);

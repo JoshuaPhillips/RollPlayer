@@ -1,49 +1,53 @@
-import React, { useState, useRef, useEffect } from "react";
+import React from "react";
 import RaceSelection from "./Races";
 import ClassSelection from "./Classes";
 import AbilityScoreSelection from "./AbilityScores";
 import BackgroundSelection from "./Backgrounds";
-export const CharacterBuilderContext = React.createContext();
 
-const CharacterBuilder = () => {
-  const [currentStage, setCurrentStage] = useState(2);
-  const [canContinue, toggleCanContinue] = useState(false);
+import { connect } from "react-redux";
 
-  const raceRef = useRef(null);
-  const classRef = useRef(null);
-  const abilityScoreRef = useRef(null);
-  const backgroundRef = useRef(null);
-  const stageRefs = [raceRef, classRef, abilityScoreRef, backgroundRef];
+const CharacterBuilder = props => {
+  const { currentBuildStage, setBuildStage, canContinue, setCanContinue } = props;
 
-  useEffect(() => {
-    window.scrollTo(0, stageRefs[currentStage].current.offsetTop);
-  }, [stageRefs, currentStage]);
+  const buildStages = ["race-selection", "class-selection", "ability-scores", "background-selection"];
 
   const moveToNextStage = () => {
-    setCurrentStage(currentStage + 1);
-    toggleCanContinue(false);
+    setBuildStage(buildStages[buildStages.indexOf(currentBuildStage) + 1]);
+    setCanContinue(false);
   };
 
   return (
-    <CharacterBuilderContext.Provider value={{ toggleCanContinue, currentStage }}>
-      <main className='bg-gray-100'>
-        <RaceSelection sectionRef={raceRef} />
-        <ClassSelection sectionRef={classRef} />
-        <AbilityScoreSelection sectionRef={abilityScoreRef} />
-        <BackgroundSelection sectionRef={backgroundRef} />
+    <main className='bg-gray-100 min-h-screen'>
+      {currentBuildStage === "race-selection" && <RaceSelection />}
+      {currentBuildStage === "class-selection" && <ClassSelection />}
+      {currentBuildStage === "ability-scores" && <AbilityScoreSelection />}
+      {currentBuildStage === "background-selection" && <BackgroundSelection />}
 
-        {canContinue && (
-          <div className='fixed bottom-0 left-0 right-0 text-center text-lg bg-blue-900 text-white'>
-            <button
-              onClick={() => moveToNextStage()}
-              className='w-full h-full py-4 outline-none uppercase tracking-widest font-bold'>
-              Continue
-            </button>
-          </div>
-        )}
-      </main>
-    </CharacterBuilderContext.Provider>
+      <div className='fixed bottom-0 right-0 w-full bg-gray-800'>
+        <button
+          className='w-full h-full text-white uppercase tracking-widest py-4 font-semibold disabled:text-gray-500 disabled:bg-gray-200'
+          onClick={() => moveToNextStage()}
+          disabled={!canContinue}>
+          Continue
+        </button>
+      </div>
+    </main>
   );
 };
 
-export default CharacterBuilder;
+const mapStateToProps = state => {
+  const { canContinue, currentBuildStage } = state.characterBuilder;
+  return {
+    canContinue,
+    currentBuildStage
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setCanContinue: value => dispatch({ type: "SET_CAN_CONTINUE", payload: { value } }),
+    setBuildStage: stage => dispatch({ type: "SET_BUILD_STAGE", payload: { stage } })
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CharacterBuilder);

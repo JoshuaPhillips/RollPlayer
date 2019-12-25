@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 
 // listing the classes explicitly prevents purgecss from removing them.
 // creating them programatically would mean they were missed in Purge's sweep.
@@ -54,11 +55,17 @@ const RaceCard = props => {
   const {
     race: { name, imageSrc, imageAlt, features },
     selectedRace,
-    setSelectedRace
+    setSelectedRace,
+    setCanContinue
   } = props;
 
+  const selectRace = name => {
+    setSelectedRace(name);
+    setCanContinue(true);
+  };
+
   return (
-    <div className='py-4 w-5/6 max-w-xs flex-shrink-0 px-2' onClick={() => setSelectedRace(name)}>
+    <div className='py-4 w-5/6 max-w-xs flex-shrink-0 px-2' onClick={() => selectRace(name)}>
       <div className={`panel relative h-64 overflow-y-hidden ${raceClassMap[name.toLowerCase()].border}`}>
         <img className='mx-auto object-contain bg-white rounded-lg' src={`./images/${imageSrc}`} alt={imageAlt} />
         {selectedRace === name && (
@@ -94,8 +101,19 @@ const RaceCard = props => {
   );
 };
 
-RaceCard.defaultProps = {
-  selected: false
+const mapStateToProps = state => {
+  const { selectedRace } = state.characterBuilder;
+
+  return {
+    selectedRace
+  };
 };
 
-export default RaceCard;
+const mapDispatchToProps = dispatch => {
+  return {
+    setCanContinue: value => dispatch({ type: "SET_CAN_CONTINUE", payload: { value } }),
+    setSelectedRace: race => dispatch({ type: "SET_SELECTED_RACE", payload: { race } })
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(RaceCard);

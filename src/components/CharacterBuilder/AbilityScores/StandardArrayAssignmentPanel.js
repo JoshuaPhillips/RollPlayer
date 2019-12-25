@@ -1,19 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
 
-const AbilityScoreAssignmentPanel = props => {
-  const initialAbilityScoreAssignments = {
-    strength: null,
-    dexterity: null,
-    constitution: null,
-    intelligence: null,
-    wisdom: null,
-    charisma: null
-  };
+const standardArray = [8, 10, 12, 13, 14, 15];
 
-  const standardArray = [8, 10, 12, 13, 14, 15];
-
+const StandardArrayAssignmentPanel = props => {
+  const { abilityScoreAssignments, setAbilityScoreAssignments, setCanContinue } = props;
   const [abilityScores, setAbilityScores] = useState(standardArray);
-  const [abilityScoreAssignments, assignAbilityScores] = useState(initialAbilityScoreAssignments);
 
   const assignedScores = Object.keys(abilityScoreAssignments).filter(
     ability => abilityScoreAssignments[ability] !== null
@@ -23,13 +15,13 @@ const AbilityScoreAssignmentPanel = props => {
   );
 
   const assignAbilityScore = (ability, score, index) => {
-    assignAbilityScores({ ...abilityScoreAssignments, [ability]: score });
+    setAbilityScoreAssignments({ ...abilityScoreAssignments, [ability]: score });
     setAbilityScores([...abilityScores.slice(0, index), ...abilityScores.slice(index + 1)]);
   };
 
   const unassignAbilityScore = ability => {
     const score = abilityScoreAssignments[ability];
-    assignAbilityScores({ ...abilityScoreAssignments, [ability]: null });
+    setAbilityScoreAssignments({ ...abilityScoreAssignments, [ability]: null });
     setAbilityScores(
       [score, ...abilityScores].sort((a, b) => {
         return a - b;
@@ -38,9 +30,21 @@ const AbilityScoreAssignmentPanel = props => {
   };
 
   const reset = () => {
-    assignAbilityScores(initialAbilityScoreAssignments);
+    setAbilityScoreAssignments({
+      strength: null,
+      dexterity: null,
+      constitution: null,
+      intelligence: null,
+      wisdom: null,
+      charisma: null
+    });
     setAbilityScores(standardArray);
+    setCanContinue(false);
   };
+
+  useEffect(() => {
+    setCanContinue(unassignedScores.length === 0);
+  }, [setCanContinue, unassignedScores, abilityScoreAssignments]);
 
   return (
     <>
@@ -84,28 +88,35 @@ const AbilityScoreAssignmentPanel = props => {
                 </div>
               );
             })}
+
+          <div className='mx-6 pb-6'>
+            <button
+              className='w-full h-full py-4 font-semibold uppercase tracking-widest text-center rounded block bg-gray-800 text-white shadow-md disabled:bg-gray-200 disabled:text-gray-500'
+              onClick={() => reset()}
+              disabled={assignedScores.length === 0}>
+              Reset
+            </button>
+          </div>
         </div>
       )}
-
-      <div className='flex mx-6 mt-6'>
-        <div className='flex-1'>
-          <button
-            className='w-full h-full py-4 font-semibold uppercase tracking-widest text-center rounded block bg-gray-800 text-white shadow-md'
-            onClick={() => reset()}
-            disabled={unassignedScores.length !== 0}>
-            Reset
-          </button>
-        </div>
-        <div className='flex-1 ml-2'>
-          <button
-            className='w-full h-full py-4 font-semibold uppercase tracking-widest text-center rounded block bg-gray-800 text-white shadow-md disabled:bg-white disabled:text-gray-500'
-            disabled={assignedScores.length !== 6}>
-            Confirm
-          </button>
-        </div>
-      </div>
     </>
   );
 };
 
-export default AbilityScoreAssignmentPanel;
+const mapStateToProps = state => {
+  const { abilityScoreAssignments } = state.characterBuilder;
+
+  return {
+    abilityScoreAssignments
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setCanContinue: value => dispatch({ type: "SET_CAN_CONTINUE", payload: { value } }),
+    setAbilityScoreAssignments: assignments =>
+      dispatch({ type: "SET_ABILITY_SCORE_ASSIGNMENTS", payload: { assignments } })
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(StandardArrayAssignmentPanel);

@@ -1,16 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
+import { connect } from "react-redux";
 
-const CustomAssignmentPanel = () => {
-  const defaultAssignments = {
-    strength: 10,
-    dexterity: 10,
-    constitution: 10,
-    intelligence: 10,
-    wisdom: 10,
-    charisma: 10
-  };
-
-  const [abilityScoreAssignments, setAbilityScoreAssignments] = useState(defaultAssignments);
+const CustomAssignmentPanel = props => {
+  const { abilityScoreAssignments, setAbilityScoreAssignments } = props;
 
   const incrementAbilityScore = ability => {
     if (!canIncrementValue(ability)) return;
@@ -37,6 +29,7 @@ const CustomAssignmentPanel = () => {
   const canDecrementValue = ability => {
     return abilityScoreAssignments[ability] > 1;
   };
+
   return (
     <>
       <div className='panel mt-6 mx-6 border-gray-900'>
@@ -66,13 +59,25 @@ const CustomAssignmentPanel = () => {
               );
             })}
       </div>
-      <div className='mt-6 mx-6 shadow-md rounded'>
-        <button className='w-full h-full py-4 font-semibold uppercase tracking-widest text-center rounded block bg-gray-800 text-white'>
-          Confirm Scores
-        </button>
-      </div>
     </>
   );
 };
 
-export default CustomAssignmentPanel;
+const mapStateToProps = state => {
+  const { canContinue, abilityScoreAssignments } = state.characterBuilder;
+
+  return {
+    canContinue,
+    abilityScoreAssignments
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setAbilityScoreAssignments: assignments =>
+      dispatch({ type: "SET_ABILITY_SCORE_ASSIGNMENTS", payload: { assignments } }),
+    setCanContinue: value => dispatch({ type: "SET_CAN_CONTINUE", payload: { value } })
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CustomAssignmentPanel);

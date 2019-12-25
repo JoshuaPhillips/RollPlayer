@@ -1,17 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
 
-const PointBuyAssignmentPanel = () => {
-  const defaultArray = {
-    strength: 8,
-    dexterity: 8,
-    constitution: 8,
-    intelligence: 8,
-    wisdom: 8,
-    charisma: 8
-  };
-
+const PointBuyAssignmentPanel = props => {
   const [pointsUsed, setPointsUsed] = useState(0);
-  const [abilityScoreAssignments, setAbilityScoreAssignments] = useState(defaultArray);
+  const { abilityScoreAssignments, setAbilityScoreAssignments, setCanContinue } = props;
 
   const incrementAbilityScore = ability => {
     if (!canIncrementValue(ability)) return;
@@ -59,6 +51,23 @@ const PointBuyAssignmentPanel = () => {
     return pointsUsed > 0 && abilityScoreAssignments[ability] !== 8;
   };
 
+  const reset = () => {
+    setAbilityScoreAssignments({
+      strength: 8,
+      dexterity: 8,
+      constitution: 8,
+      intelligence: 8,
+      wisdom: 8,
+      charisma: 8
+    });
+    setPointsUsed(0);
+    setCanContinue(false);
+  };
+
+  useEffect(() => {
+    setCanContinue(pointsUsed === 27);
+  }, [pointsUsed, setCanContinue]);
+
   return (
     <>
       <div className='panel mt-6 mx-6 border-gray-900'>
@@ -91,16 +100,33 @@ const PointBuyAssignmentPanel = () => {
                 </div>
               );
             })}
-      </div>
-      <div className='mt-6 mx-6 shadow-md rounded'>
-        <button
-          className='w-full h-full py-4 font-semibold uppercase tracking-widest text-center rounded block bg-gray-800 text-white disabled:bg-white disabled:text-gray-500'
-          disabled={pointsUsed !== 27}>
-          Confirm Scores
-        </button>
+        <div className='mx-6 pb-6'>
+          <button
+            className='w-full h-full py-4 font-semibold uppercase tracking-widest text-center rounded block bg-gray-800 text-white shadow-md disabled:bg-gray-200 disabled:text-gray-500'
+            onClick={() => reset()}
+            disabled={pointsUsed === 0}>
+            Reset
+          </button>
+        </div>
       </div>
     </>
   );
 };
 
-export default PointBuyAssignmentPanel;
+const mapStateToProps = state => {
+  const { abilityScoreAssignments } = state.characterBuilder;
+
+  return {
+    abilityScoreAssignments
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setCanContinue: value => dispatch({ type: "SET_CAN_CONTINUE", payload: { value } }),
+    setAbilityScoreAssignments: assignments =>
+      dispatch({ type: "SET_ABILITY_SCORE_ASSIGNMENTS", payload: { assignments } })
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PointBuyAssignmentPanel);

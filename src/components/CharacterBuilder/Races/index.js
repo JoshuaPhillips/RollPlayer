@@ -1,22 +1,12 @@
-import React, { useState, useContext, useEffect } from "react";
+import React from "react";
 import RaceCard from "./RaceCard";
-import { CharacterBuilderContext } from "../index";
 
 import data from "../../../data.json";
 import SectionHeader from "../shared/SectionHeader";
 
-const RaceSelection = props => {
-  const [selectedRace, setSelectedRace] = useState(null);
-  const { toggleCanContinue, currentStage } = useContext(CharacterBuilderContext);
-
-  const { sectionRef } = props;
-
-  useEffect(() => {
-    if (selectedRace !== null) toggleCanContinue(true);
-  }, [toggleCanContinue, selectedRace]);
-
+const RaceSelection = () => {
   return (
-    <section className={`pb-10 ${currentStage >= 0 ? "block" : "hidden"}`} ref={sectionRef}>
+    <section className='pb-10'>
       <SectionHeader title='1. Choose a Race'>
         <p className=' px-4'>
           Every character belongs to a race, one of the many intelligent humanoid species in the D&amp;D world. The most
@@ -43,7 +33,7 @@ const RaceSelection = props => {
       <div className='overflow-x-auto px-4 py-4'>
         <div className='inline-flex'>
           {data.races.map(race => {
-            return <RaceCard key={race.id} race={race} selectedRace={selectedRace} setSelectedRace={setSelectedRace} />;
+            return <RaceCard key={race.id} race={race} />;
           })}
         </div>
       </div>

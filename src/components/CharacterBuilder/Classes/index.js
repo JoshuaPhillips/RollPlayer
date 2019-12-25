@@ -1,22 +1,15 @@
-import React, { useState, useEffect, useContext } from "react";
-import { CharacterBuilderContext } from "../index";
+import React, { useState } from "react";
 import ClassCard from "./ClassCard";
+import { connect } from "react-redux";
 
 import data from "../../../data.json";
 import SectionHeader from "../shared/SectionHeader";
 
-const ClassSelection = props => {
+const ClassSelection = () => {
   const [selectedClass, setSelectedClass] = useState(null);
-  const { toggleCanContinue, currentStage } = useContext(CharacterBuilderContext);
-
-  const { sectionRef } = props;
-
-  useEffect(() => {
-    if (selectedClass !== null) toggleCanContinue(true);
-  }, [toggleCanContinue, selectedClass]);
 
   return (
-    <section className={`pb-10 ${currentStage >= 1 ? "block" : "hidden"}`} ref={sectionRef}>
+    <section className='pb-10'>
       <SectionHeader title='2. Choose a Class'>
         <p className='px-4'>
           Every adventurer is a member of a class. Class broadly describes a character's vocation, what special talents
@@ -53,4 +46,18 @@ const ClassSelection = props => {
   );
 };
 
-export default ClassSelection;
+const mapStateToProps = state => {
+  const { currentBuildStage } = state.characterBuilder;
+
+  return {
+    currentBuildStage
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setCanContinue: value => dispatch({ type: "SET_CAN_CONTINUE", payload: { value } })
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ClassSelection);

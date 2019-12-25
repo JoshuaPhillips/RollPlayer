@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
 
 const generateRandomArray = () => {
   let array = [];
@@ -24,18 +25,9 @@ const generateRandomArray = () => {
   });
 };
 
-const AbilityScoreAssignmentPanel = () => {
-  const initialAbilityScoreAssignments = {
-    strength: null,
-    dexterity: null,
-    constitution: null,
-    intelligence: null,
-    wisdom: null,
-    charisma: null
-  };
-
+const RandomArrayAssignmentPanel = props => {
+  const { abilityScoreAssignments, setAbilityScoreAssignments, setCanContinue } = props;
   const [abilityScores, setAbilityScores] = useState(generateRandomArray());
-  const [abilityScoreAssignments, assignAbilityScores] = useState(initialAbilityScoreAssignments);
 
   const assignedScores = Object.keys(abilityScoreAssignments).filter(
     ability => abilityScoreAssignments[ability] !== null
@@ -45,18 +37,26 @@ const AbilityScoreAssignmentPanel = () => {
   );
 
   const rollAgain = () => {
-    assignAbilityScores(initialAbilityScoreAssignments);
+    setAbilityScoreAssignments({
+      strength: null,
+      dexterity: null,
+      constitution: null,
+      intelligence: null,
+      wisdom: null,
+      charisma: null
+    });
     setAbilityScores(generateRandomArray());
+    setCanContinue(false);
   };
 
   const assignAbilityScore = (ability, score, index) => {
-    assignAbilityScores({ ...abilityScoreAssignments, [ability]: score });
+    setAbilityScoreAssignments({ ...abilityScoreAssignments, [ability]: score });
     setAbilityScores([...abilityScores.slice(0, index), ...abilityScores.slice(index + 1)]);
   };
 
   const unassignAbilityScore = ability => {
     const score = abilityScoreAssignments[ability];
-    assignAbilityScores({ ...abilityScoreAssignments, [ability]: null });
+    setAbilityScoreAssignments({ ...abilityScoreAssignments, [ability]: null });
     setAbilityScores(
       [score, ...abilityScores].sort((a, b) => {
         return a - b;
@@ -64,34 +64,44 @@ const AbilityScoreAssignmentPanel = () => {
     );
   };
 
+  useEffect(() => {
+    if (unassignedScores.length === 0) {
+      setCanContinue(true);
+    }
+  }, [unassignedScores, setCanContinue]);
+
   return (
     <>
       {unassignedScores.length !== 0 && (
-        <div className='panel mt-6 mx-6 border-gray-900 flex overflow-x-hidden'>
-          {unassignedScores.map(ability => {
-            return (
-              <div key={ability} className='w-full flex-shrink-0'>
-                <p className='py-4 text-center font-semibold uppercase text-sm tracking-widest border-b border-gray-200'>
-                  Select {ability.toUpperCase()} score
-                </p>
+        <div className='panel mt-6 mx-6 border-gray-900'>
+          <div key={unassignedScores[0]} className='w-full flex-shrink-0'>
+            <p className='py-4 text-center font-semibold uppercase text-sm tracking-widest border-b border-gray-200'>
+              Select {unassignedScores[0].toUpperCase()} score
+            </p>
 
-                <div className='text-center'>
-                  {abilityScores.map((score, index) => {
-                    return (
-                      <button
-                        key={index}
-                        onClick={() => assignAbilityScore(ability, score, index)}
-                        className='w-1/6 font-semibold py-4 hover:bg-gray-200'>
-                        {score}
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-            );
-          })}
+            <div className='text-center'>
+              {abilityScores.map((score, index) => {
+                return (
+                  <button
+                    key={index}
+                    onClick={() => assignAbilityScore(unassignedScores[0], score, index)}
+                    className='w-1/6 font-semibold py-4 hover:bg-gray-200'>
+                    {score}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+          <div className='pb-6 mx-6 shadow-md'>
+            <button
+              className='w-full h-full py-4 font-semibold rounded uppercase tracking-widest text-center block bg-gray-800 text-white disabled:bg-gray-200 disabled:text-gray-500'
+              onClick={() => rollAgain()}>
+              Roll Again
+            </button>
+          </div>
         </div>
       )}
+
       {assignedScores.length !== 0 && (
         <div className='panel mt-6 mx-6 border-gray-900'>
           {Object.keys(abilityScoreAssignments)
@@ -109,26 +119,24 @@ const AbilityScoreAssignmentPanel = () => {
             })}
         </div>
       )}
-
-      <div className='flex mx-6 mt-6'>
-        <div className='flex-1 shadow-md'>
-          <button
-            className='w-full h-full py-4 font-semibold rounded uppercase tracking-widest text-center block bg-gray-800 text-white'
-            onClick={() => rollAgain()}
-            disabled={unassignedScores.length !== 0}>
-            Roll Again
-          </button>
-        </div>
-        <div className='flex-1 ml-2 shadow-md'>
-          <button
-            className='w-full h-full py-4 font-semibold rounded uppercase tracking-widest text-center block bg-gray-800 text-white disabled:bg-white disabled:text-gray-500'
-            disabled={assignedScores.length !== 6}>
-            Confirm
-          </button>
-        </div>
-      </div>
     </>
   );
 };
 
-export default AbilityScoreAssignmentPanel;
+const mapStateToProps = state => {
+  const { abilityScoreAssignments } = state.characterBuilder;
+
+  return {
+    abilityScoreAssignments
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setAbilityScoreAssignments: assignments =>
+      dispatch({ type: "SET_ABILITY_SCORE_ASSIGNMENTS", payload: { assignments } }),
+    setCanContinue: value => dispatch({ type: "SET_CAN_CONTINUE", payload: { value } })
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(RandomArrayAssignmentPanel);
