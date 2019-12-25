@@ -66,8 +66,10 @@ const CustomAssignmentPanel = () => {
               );
             })}
       </div>
-      <div className='mt-6 mx-6 p-4 text-center text-white rounded bg-gray-800 shadow-lg'>
-        <button className='font-semibold uppercase tracking-widest'>Confirm Ability Scores</button>
+      <div className='mt-6 mx-6 shadow-md rounded'>
+        <button className='w-full h-full py-4 font-semibold uppercase tracking-widest text-center rounded block bg-gray-800 text-white'>
+          Confirm Scores
+        </button>
       </div>
     </>
   );

@@ -110,11 +110,23 @@ const AbilityScoreAssignmentPanel = () => {
         </div>
       )}
 
-      <button
-        className='text-center rounded mt-6 w-1/2 mx-auto block bg-gray-800 text-white font-semibold py-2'
-        onClick={() => rollAgain()}>
-        Roll Again
-      </button>
+      <div className='flex mx-6 mt-6'>
+        <div className='flex-1 shadow-md'>
+          <button
+            className='w-full h-full py-4 font-semibold rounded uppercase tracking-widest text-center block bg-gray-800 text-white'
+            onClick={() => rollAgain()}
+            disabled={unassignedScores.length !== 0}>
+            Roll Again
+          </button>
+        </div>
+        <div className='flex-1 ml-2 shadow-md'>
+          <button
+            className='w-full h-full py-4 font-semibold rounded uppercase tracking-widest text-center block bg-gray-800 text-white disabled:bg-white disabled:text-gray-500'
+            disabled={assignedScores.length !== 6}>
+            Confirm
+          </button>
+        </div>
+      </div>
     </>
   );
 };

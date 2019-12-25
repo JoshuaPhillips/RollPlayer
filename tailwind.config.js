@@ -2,5 +2,6 @@ module.exports = {
   theme: {
     extend: {}
   },
-  plugins: []
+  plugins: [],
+  variants: ["responsive", "hover", "focus", "disabled"]
 };

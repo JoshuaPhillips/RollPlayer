@@ -8,7 +8,8 @@ import CustomAssignmentPanel from "./CustomAssignmentPanel";
 
 const AbilityScoreSelection = props => {
   const { sectionRef } = props;
-  const [selectedScoreCalculationMethod, setSelectedScoreCalculationMethod] = useState("custom");
+  const [selectedScoreCalculationMethod, setSelectedScoreCalculationMethod] = useState("standard");
+
   const { currentStage } = useContext(CharacterBuilderContext);
 
   const ScoreSelectionMethodOption = props => {

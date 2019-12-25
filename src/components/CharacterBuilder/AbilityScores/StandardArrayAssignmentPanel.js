@@ -70,7 +70,7 @@ const AbilityScoreAssignmentPanel = props => {
         </div>
       )}
       {assignedScores.length !== 0 && (
-        <div className='panel mt-6 pb-4 mx-5 border-gray-900'>
+        <div className='panel mt-6 mx-5 border-gray-900'>
           {Object.keys(abilityScoreAssignments)
             .filter(ability => abilityScoreAssignments[ability] !== null)
             .map(ability => {
@@ -84,13 +84,26 @@ const AbilityScoreAssignmentPanel = props => {
                 </div>
               );
             })}
+        </div>
+      )}
+
+      <div className='flex mx-6 mt-6'>
+        <div className='flex-1'>
           <button
-            className='text-center rounded w-1/2 mx-auto mt-4  block bg-gray-800 text-white font-semibold py-2'
-            onClick={() => reset()}>
+            className='w-full h-full py-4 font-semibold uppercase tracking-widest text-center rounded block bg-gray-800 text-white shadow-md'
+            onClick={() => reset()}
+            disabled={unassignedScores.length !== 0}>
             Reset
           </button>
         </div>
-      )}
+        <div className='flex-1 ml-2'>
+          <button
+            className='w-full h-full py-4 font-semibold uppercase tracking-widest text-center rounded block bg-gray-800 text-white shadow-md disabled:bg-white disabled:text-gray-500'
+            disabled={assignedScores.length !== 6}>
+            Confirm
+          </button>
+        </div>
+      </div>
     </>
   );
 };
