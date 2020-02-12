@@ -2,7 +2,3 @@
 @import "tailwindcss/components";
 @import "./customClasses.src.css";
 @import "tailwindcss/utilities";
-
-html {
-  scroll-behavior: smooth;
-}
