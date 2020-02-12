@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
+import * as ACTION_TYPES from "../../../redux/ActionTypes";
 
 const PointBuyAssignmentPanel = props => {
   const [pointsUsed, setPointsUsed] = useState(0);
@@ -123,9 +124,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setCanContinue: value => dispatch({ type: "SET_CAN_CONTINUE", payload: { value } }),
+    setCanContinue: value => dispatch({ type: ACTION_TYPES.SET_CAN_CONTINUE, payload: { value } }),
     setAbilityScoreAssignments: assignments =>
-      dispatch({ type: "SET_ABILITY_SCORE_ASSIGNMENTS", payload: { assignments } })
+      dispatch({ type: ACTION_TYPES.SET_ABILITY_SCORE_ASSIGNMENTS, payload: { assignments } })
   };
 };
 

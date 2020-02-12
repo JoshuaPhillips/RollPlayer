@@ -1,5 +1,7 @@
+import * as ACTION_TYPES from "./ActionTypes";
+
 const initialState = {
-  currentBuildStage: "background-selection",
+  currentBuildStage: "race-selection",
   canContinue: false,
   selectedRace: null,
   selectedClass: null,
@@ -15,31 +17,31 @@ const initialState = {
 
 export const characterBuildReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "SET_SELECTED_RACE":
+    case ACTION_TYPES.SET_SELECTED_RACE:
       return {
         ...state,
         selectedRace: action.payload.race
       };
 
-    case "SET_SELECTED_CLASS":
+    case ACTION_TYPES.SET_SELECTED_CLASS:
       return {
         ...state,
         selectedClass: action.payload.selectedClass
       };
 
-    case "SET_ABILITY_SCORE_ASSIGNMENTS":
+    case ACTION_TYPES.SET_ABILITY_SCORE_ASSIGNMENTS:
       return {
         ...state,
         abilityScoreAssignments: action.payload.assignments
       };
 
-    case "SET_CAN_CONTINUE":
+    case ACTION_TYPES.SET_CAN_CONTINUE:
       return {
         ...state,
         canContinue: action.payload.value
       };
 
-    case "SET_BUILD_STAGE":
+    case ACTION_TYPES.SET_BUILD_STAGE:
       return {
         ...state,
         currentBuildStage: action.payload.stage

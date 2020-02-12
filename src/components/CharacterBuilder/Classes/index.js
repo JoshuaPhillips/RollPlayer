@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ClassCard from "./ClassCard";
 import { connect } from "react-redux";
+import * as ACTION_TYPES from "../../../redux/ActionTypes";
 
 import { classes } from "../../../data/classes.json";
 import SectionHeader from "../shared/SectionHeader";
@@ -56,7 +57,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setCanContinue: value => dispatch({ type: "SET_CAN_CONTINUE", payload: { value } })
+    setCanContinue: value => dispatch({ type: ACTION_TYPES.SET_CAN_CONTINUE, payload: { value } })
   };
 };
 

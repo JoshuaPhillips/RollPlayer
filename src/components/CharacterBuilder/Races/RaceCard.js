@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import * as ACTION_TYPES from "../../../redux/ActionTypes";
 
 // listing the classes explicitly prevents purgecss from removing them.
 // creating them programatically would mean they were missed in Purge's sweep.
@@ -111,8 +112,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setCanContinue: value => dispatch({ type: "SET_CAN_CONTINUE", payload: { value } }),
-    setSelectedRace: race => dispatch({ type: "SET_SELECTED_RACE", payload: { race } })
+    setCanContinue: value => dispatch({ type: ACTION_TYPES.SET_CAN_CONTINUE, payload: { value } }),
+    setSelectedRace: race => dispatch({ type: ACTION_TYPES.SET_SELECTED_RACE, payload: { race } })
   };
 };
 

@@ -4,7 +4,9 @@ import RandomArrayAssignmentPanel from "./RandomArrayAssignmentPanel";
 import StandardArrayAssignmentPanel from "./StandardArrayAssignmentPanel";
 import PointBuyAssignmentPanel from "./PointBuyAssignmentPanel";
 import CustomAssignmentPanel from "./CustomAssignmentPanel";
+
 import { connect } from "react-redux";
+import * as ACTION_TYPES from "../../../redux/ActionTypes";
 
 const AbilityScoreSelection = props => {
   const { setAbilityScoreAssignments, setCanContinue } = props;
@@ -123,8 +125,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     setAbilityScoreAssignments: assignments =>
-      dispatch({ type: "SET_ABILITY_SCORE_ASSIGNMENTS", payload: { assignments } }),
-    setCanContinue: value => dispatch({ type: "SET_CAN_CONTINUE", payload: { value } })
+      dispatch({ type: ACTION_TYPES.SET_ABILITY_SCORE_ASSIGNMENTS, payload: { assignments } }),
+    setCanContinue: value => dispatch({ type: ACTION_TYPES.SET_CAN_CONTINUE, payload: { value } })
   };
 };
 
