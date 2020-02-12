@@ -5,6 +5,7 @@ import AbilityScoreSelection from "./AbilityScores";
 import BackgroundSelection from "./Backgrounds";
 
 import { connect } from "react-redux";
+import * as ACTION_TYPES from "../../redux/ActionTypes";
 
 const CharacterBuilder = props => {
   const { currentBuildStage, setBuildStage, canContinue, setCanContinue } = props;
@@ -45,8 +46,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setCanContinue: value => dispatch({ type: "SET_CAN_CONTINUE", payload: { value } }),
-    setBuildStage: stage => dispatch({ type: "SET_BUILD_STAGE", payload: { stage } })
+    setCanContinue: value => dispatch({ type: ACTION_TYPES.SET_CAN_CONTINUE, payload: { value } }),
+    setBuildStage: stage => dispatch({ type: ACTION_TYPES.SET_BUILD_STAGE, payload: { stage } })
   };
 };
 
