@@ -2,69 +2,19 @@ import React from "react";
 import { connect } from "react-redux";
 import * as ACTION_TYPES from "../../../redux/ActionTypes";
 
-// listing the classes explicitly prevents purgecss from removing them.
-// creating them programatically would mean they were missed in Purge's sweep.
 const classThemeMap = {
-  barbarian: {
-    borderColor: "border-gray-700",
-    backgroundColor: "bg-gray-700",
-    textColor: "text-gray-700"
-  },
-  bard: {
-    borderColor: "border-teal-700",
-    backgroundColor: "bg-teal-700",
-    textColor: "text-teal-700"
-  },
-  cleric: {
-    borderColor: "border-orange-600",
-    backgroundColor: "bg-orange-600",
-    textColor: "text-orange-600"
-  },
-  druid: {
-    borderColor: "border-blue-700",
-    backgroundColor: "bg-blue-700",
-    textColor: "text-blue-700"
-  },
-  fighter: {
-    borderColor: "border-blue-400",
-    backgroundColor: "bg-blue-400",
-    textColor: "text-blue-400"
-  },
-  monk: {
-    borderColor: "border-yellow-600",
-    backgroundColor: "bg-yellow-600",
-    textColor: "text-yellow-600"
-  },
-  paladin: {
-    borderColor: "border-gray-800",
-    backgroundColor: "bg-gray-800",
-    textColor: "text-gray-800"
-  },
-  ranger: {
-    borderColor: "border-teal-700",
-    backgroundColor: "bg-teal-700",
-    textColor: "text-teal-700"
-  },
-  rogue: {
-    borderColor: "border-red-800",
-    backgroundColor: "bg-red-800",
-    textColor: "text-red-800"
-  },
-  sorcerer: {
-    borderColor: "border-orange-500",
-    backgroundColor: "bg-orange-500",
-    textColor: "text-orange-500"
-  },
-  warlock: {
-    borderColor: "border-purple-800",
-    backgroundColor: "bg-purple-800",
-    textColor: "text-purple-800"
-  },
-  wizard: {
-    borderColor: "border-blue-600",
-    backgroundColor: "bg-blue-600",
-    textColor: "text-blue-600"
-  }
+  barbarian: "gray-700",
+  bard: "teal-700",
+  cleric: "orange-600",
+  druid: "blue-700",
+  fighter: "blue-400",
+  monk: "yellow-600",
+  paladin: "gray-800",
+  ranger: "teal-700",
+  rogue: "red-800",
+  sorcerer: "orange-500",
+  warlock: "purple-800",
+  wizard: "blue-600"
 };
 
 const StatEntry = props => {
@@ -99,7 +49,9 @@ const ClassCard = props => {
     setCanContinue
   } = props;
 
-  const { borderColor, backgroundColor, textColor } = classThemeMap[name.toLowerCase()];
+  const borderColorClass = `border-${classThemeMap[name.toLowerCase()]}`;
+  const backgroundColorClass = `bg-${classThemeMap[name.toLowerCase()]}`;
+  const textColorClass = `text-${classThemeMap[name.toLowerCase()]}`;
 
   const selectClass = name => {
     setSelectedClass(name);
@@ -107,14 +59,14 @@ const ClassCard = props => {
   };
 
   return (
-    <div className={`py-4 w-screen max-w-xs flex-shrink-0 px-2 ${textColor}`}>
+    <div className={`py-4 w-screen max-w-xs flex-shrink-0 px-2 ${textColorClass}`}>
       <div
-        className={`panel relative h-64 overflow-y-hidden cursor-pointer ${borderColor}`}
+        className={`panel relative h-64 overflow-y-hidden cursor-pointer ${borderColorClass}`}
         onClick={() => selectClass(name)}>
         <img className='mx-auto object-contain bg-white rounded-lg' src={`./images/${imageSrc}`} alt={imageAlt} />
         {selectedClass === name && (
           <span
-            className={`absolute top-0 right-0 mr-6 text-4xl p-2 rounded rounded-t-none shadow-xl text-white ${backgroundColor}`}>
+            className={`absolute top-0 right-0 mr-6 text-4xl p-2 rounded rounded-t-none shadow-xl text-white ${backgroundColorClass}`}>
             {"\u2713"}
           </span>
         )}
@@ -122,18 +74,18 @@ const ClassCard = props => {
 
       <h3
         className={`panel relative uppercase font-bold tracking-widest 
-        shadow-lg text-xl mx-auto -mt-8 w-2/3 py-4 text-center ${borderColor}`}>
+        shadow-lg text-xl mx-auto -mt-8 w-2/3 py-4 text-center ${borderColorClass}`}>
         {name}
       </h3>
 
       <div
-        className={`my-6 w-3/4 p-2 mx-auto text-center rounded-full text-white font-semibold shadow-md ${backgroundColor} ${borderColor}`}>
+        className={`my-6 w-3/4 p-2 mx-auto text-center rounded-full text-white font-semibold shadow-md ${backgroundColorClass} ${borderColorClass}`}>
         <h4>Subclass: {subClass}</h4>
       </div>
 
       <div className='max-h-screen overflow-y-auto pt-6 pb-2 rounded'>
         <div>
-          <ClassCardSection title='Hit Dice' borderColor={borderColor} customClasses='pb-8'>
+          <ClassCardSection title='Hit Dice' borderColor={borderColorClass} customClasses='pb-8'>
             <div className='py-6'>
               <StatEntry title='Hit Dice'>
                 <p>d{hitDice}</p>
@@ -152,7 +104,7 @@ const ClassCard = props => {
             </div>
           </ClassCardSection>
 
-          <ClassCardSection title='Proficiencies' borderColor={borderColor} customClasses='pb-8'>
+          <ClassCardSection title='Proficiencies' borderColor={borderColorClass} customClasses='pb-8'>
             <div className='py-6'>
               {proficiencies.map(({ name, proficiencies }, index) => {
                 return proficiencies.length === 0 ? null : name === "Skill Choices" ? (
@@ -174,7 +126,7 @@ const ClassCard = props => {
             </div>
           </ClassCardSection>
 
-          <ClassCardSection title='Equipment' borderColor={borderColor} customClasses='pb-8'>
+          <ClassCardSection title='Equipment' borderColor={borderColorClass} customClasses='pb-8'>
             <div className='py-6'>
               <ul className='list-disc ml-8'>
                 <li>{equipment.join(", ")}</li>
@@ -190,7 +142,7 @@ const ClassCard = props => {
             </div>
           </ClassCardSection>
 
-          <ClassCardSection title='Features' borderColor={borderColor}>
+          <ClassCardSection title='Features' borderColor={borderColorClass}>
             <div className='pt-4'>
               {features.map((feature, index) => {
                 return (
