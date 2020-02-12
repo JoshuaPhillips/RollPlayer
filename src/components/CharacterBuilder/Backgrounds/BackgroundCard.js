@@ -42,7 +42,7 @@ const BackgroundCardSection = props => {
 
   return (
     <div className={["panel", borderColor, customClasses].join(" ")}>
-      <div className={`panel relative py-2 text-center shadow-lg ml-2 -mt-6 w-1/2 uppercase ${borderColor}`}>
+      <div className={`panel relative p-2 shadow-lg -mt-6 mx-2 uppercase ${borderColor}`}>
         <h4 className='font-semibold tracking-wide'>{title}</h4>
       </div>
 
@@ -57,12 +57,14 @@ const BackgroundCard = props => {
     description,
     proficiencies: { skills: skillProficiencies, tools: toolProficiencies, languages: languageProficiencies },
     equipment,
+    subBackground,
     feature,
     suggestedCharacteristics,
-    personality
+    personality,
+    variant
   } = props.background;
   return (
-    <div>
+    <div className='w-1/2'>
       <div className='panel border-gray-800 text-center uppercase font-semibold tracking-widest py-4 w-1/2 mx-auto'>
         {name}
       </div>
@@ -107,9 +109,15 @@ const BackgroundCard = props => {
           </ul>
         </BackgroundCardSection>
 
-        <BackgroundCardSection title='Feature' customClasses='pb-8'>
+        {subBackground && (
+          <BackgroundCardSection title={subBackground.name} customClasses='pb-8'>
+            <div className='p-4'>{subBackground.description}</div>
+            <PersonalityTable options={subBackground.options} title={subBackground.name} />
+          </BackgroundCardSection>
+        )}
+
+        <BackgroundCardSection title={`Feature: ${feature.name}`} customClasses='pb-8'>
           <div className='p-4'>
-            <h4 className='uppercase font-bold tracking-widest'>{feature.name}</h4>
             <p className='mt-4'>{feature.description}</p>
           </div>
         </BackgroundCardSection>
@@ -128,6 +136,17 @@ const BackgroundCard = props => {
             <PersonalityTable options={personality.flaws} title='Flaw' />
           </div>
         </BackgroundCardSection>
+
+        {variant && (
+          <BackgroundCardSection title={`Variant ${name}: ${variant.name}`} customClasses='pb-8'>
+            <div className='p-4'>
+              <p className='mt-4'>{variant.description}</p>
+              {variant.variantFeature && (
+                <PersonalityTable options={variant.variantFeature.options} title={variant.variantFeature.name} />
+              )}
+            </div>
+          </BackgroundCardSection>
+        )}
       </div>
     </div>
   );

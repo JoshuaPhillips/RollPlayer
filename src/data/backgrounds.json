@@ -106,7 +106,7 @@
           "I shave coins or forge documents.",
           "I insinuate myself into people's lives to prey on their weakness and secure their fortunes.",
           "I put on new identities like clothes.",
-          "I run sleigh-of-hand cons on street corners.",
+          "I run sleight-of-hand cons on street corners.",
           "I convince people that worthless junk is worth their hard-earned money."
         ]
       },
@@ -267,7 +267,8 @@
       },
       "variant": {
         "name": "Spy",
-        "description": "Although your capabilities are not much different from those of a burglar or smuggler, you learned and practiced them in a very different context: as an espionage agent. You might ahve been an officially sanctioned agent of the crown,  or perhaps you sold the secrets you uncovered to the highest bidder."
+        "description": "Although your capabilities are not much different from those of a burglar or smuggler, you learned and practiced them in a very different context: as an espionage agent. You might ahve been an officially sanctioned agent of the crown,  or perhaps you sold the secrets you uncovered to the highest bidder.",
+        "variantFeature": null
       }
     }
   ]
