@@ -1,0 +1,274 @@
+{
+  "backgrounds": [
+    {
+      "name": "Acolyte",
+      "description": "You have spent your life in the service of a temple to a specfic god or pantheon of gods. You act as an intermediary between the realm of the holy and the mortal world, performing sacred rites and offering sacrficies in order to conduct worshipers into the presence of the divine. You are not necessarily a cleric - performing sacred rites is not the same thing as channeling divine power. Choose a god, a pantheon of gods, or some other quasi-divine being, and work with your DM to detail the nature of your religious service. Were you a lesser functionary in a temple, raised from childhood to assist the priests in the sacred rites? Or were you a high priest who suddenly experienced a call to serve your god in a  different way? Perhaps you were the leader of a small cult outside of any established temple structure, or even an occult group that served a fiendish master that you now deny.",
+      "proficiencies": {
+        "skills": ["Insight", "Religion"],
+        "tools": [],
+        "languages": ["Two of your choice"]
+      },
+      "equipment": [
+        "A holy symbol (a gift to you when you entered the priesthood)",
+        "a prayer book or prayer wheel",
+        "5 sticks of incense",
+        "vestments",
+        "a set of common clothes",
+        "a pouch containing 15 gp"
+      ],
+      "subBackground": null,
+      "feature": {
+        "name": "Shelter of the Faithful",
+        "description": "As an acolyte, you command the respect of those who share your faith, and you can perform the religious ceremonies of your deity. You and your adventuring companions can expect to receive free healing and care at a temple, shrine, or other established presence of your faith, though you must provide any material components needed for spells. Those who share your religion whill support you (but only you) at a modest lifestyle.\nYou might also have ties to a specific temple dedicated to your chosen deity or pantheon, and you have a residence there. This could the temple where you used to serve, if you remain on good terms with it, or a temple where you have found a new home. While near your temple, you can call upon the priests for assistance, provided the assistance you ask for is not hazardous and you remain in good standing with the temple."
+      },
+      "suggestedCharacteristics": "Acolytes are shaped by their experience in temples or other religious communities. Their study of the history and tenets of their faith and their relationships to temples, shrines, or heirarchies affect their mannerisms and ideals. Their flaws might be some hidden hypocrisy or heretical idea, or an ideal or bond taken to an extreme.",
+      "personality": {
+        "personalityTraits": [
+          "I idolize a particular hero of my faith, and constantly refer to that person's deeds and example.",
+          "I can find common ground between the fiercest enemies, empathizing with them and always working towards peace.",
+          "I see omens in every event and action. The gods try to speak to us, we just need to listen.",
+          "Nothing can shake my optimistic attitude.",
+          "I quote (or misquote) sacred texts and proverbs in almost every situation.",
+          "I am tolerant (or intolerant) of other faiths and respect (or condemn) the worship of other gods.",
+          "I've enjoyed fine food, drink, and high society among my temple's elite. Rough living grates on me.",
+          "I've spent so long in the temple that I have little practical experience dealing with people in the outside world."
+        ],
+        "ideals": [
+          {
+            "name": "Tradition",
+            "description": "The ancient traditions of worship and sacrifice must be preserved and upheld.",
+            "alignment": "Lawful"
+          },
+          {
+            "name": "Charity",
+            "description": "I always try to help those in need, no matter what the personal cost.",
+            "alignment": "Good"
+          },
+          {
+            "name": "Change",
+            "description": "We must help bring about the changes the gods are constantly working in the world.",
+            "alignment": "Chaotic"
+          },
+          {
+            "name": "Power",
+            "description": "I hope to one day rise to the top of my faith's religious heirarchy.",
+            "alignment": "Lawful"
+          },
+          {
+            "name": "Faith",
+            "description": "I trust that my deity will guide my actions. I have faith that if I work hard, things will go well.",
+            "alignment": "Lawful"
+          },
+          {
+            "name": "Aspiration",
+            "description": "I seek to prove myself worthy of my god's favor by matching my actions against his or her teachings.",
+            "alignment": "Any"
+          }
+        ],
+        "bonds": [
+          "I would die to recover an ancient relic of my faith that was lost long ago.",
+          "I will someday get revenge on the corrupt temple heirarchy who branded me a heretic.",
+          "I owe my life to the priest who took me in when my parents died.",
+          "Everything I do is for the common people.",
+          "I will do anything to protect the temple where I served.",
+          "I seek to preserve a sacred text that my enemies consider herretical and seek to destroy."
+        ],
+        "flaws": [
+          "I judge others harshly, and myself even more severely.",
+          "I put too much trust in those who wield power within my temple's heirarchy.",
+          "My piety sometimes leads me to blindly trust those that profess faith in my god.",
+          "I am inflexible in my thinking.",
+          "I am suspicious of strangers and expect the worst of them.",
+          "Once I pick a goal, I become obsessed with it to the detriment of everything else in my life."
+        ]
+      },
+      "variant": null
+    },
+    {
+      "name": "Charlatan",
+      "description": "You have always had a way with people. You know what makes them tick, you can tease out their hearts' desires after a few minutes of conversation, and with a few leading questions you can read them like tey were children's books. It's a useful talent, and one that you're perfectly willing to use for your advantage. You know what people want and you deliver, or rather, you promise to deliver. Common sense should steer people away form things that sound too good to be true, but common sense seems to be in hort supply when you're around. The bottle of pink-colored liquid will surely cure that unseemly rash, this ointment - nothing more than a bit of fat with a sprinkle of silver dust - can restore youth and vigor, and there's a brdige in the city that just happens to be for sale. These marvels sound implausible, but you make them sound like the real deal.",
+      "proficiencies": {
+        "skills": ["Deception", "Sleight of Hand"],
+        "tools": ["Disguise kit", "forgery kit"],
+        "languages": []
+      },
+      "equipment": [
+        "A set of fine clothes",
+        "a disguise kit",
+        "tools fo the con of your choice (ten stoppered bottles filled with colored liquid, a set of weighted dice, a deck of marked cards or a signet ring of an imaginary duke)",
+        "a pouch containing 15 gp"
+      ],
+      "subBackground": {
+        "name": "Favorite Schemes",
+        "description": "Every charlatan has an angle he or shes uses in preference ot other schemes. Choose a favorite scam or roll on the table below:",
+        "options": [
+          "I cheat at games of chance.",
+          "I shave coins or forge documents.",
+          "I insinuate myself into people's lives to prey on their weakness and secure their fortunes.",
+          "I put on new identities like clothes.",
+          "I run sleigh-of-hand cons on street corners.",
+          "I convince people that worthless junk is worth their hard-earned money."
+        ]
+      },
+      "feature": {
+        "name": "False Identity",
+        "description": "You have created a second identity that includes documentation, established acquaintances, and disguises that allow you to assume that persona. Additionally, you can forge documents including official papers and personal letters, as long as you have seen an example of the kind of document or the handwriting you are trying to copy."
+      },
+      "suggestedCharacteristics": "Charlatans are colorful characters who conceal their true selves behind the masks they construct. They reflect what people want to see, what they want to believe, and how they see the world. But their true selves are sometimes plagued by an uneasy conscience, an old enemy, or deep-seated trust issues.",
+      "personality": {
+        "personalityTraits": [
+          "I fall in and out of love easily, and am always pursuing someone.",
+          "I have a joke for every occasion, especially occassions where humour is inappropriate.",
+          "Flattery is my preferred trick for getting what I want.",
+          "I'm a born gambler who can't resist taking a risk for a potential payoff.",
+          "I lie about almost everything, even when there's no good reason to.",
+          "Sarcasm and insults are my weapons of choice.",
+          "I keep multiple holy symbols on me and invoke whatever deity might come in useful at any given moment.",
+          "I pocket anything I see that might have some value."
+        ],
+        "ideals": [
+          {
+            "name": "Independence",
+            "description": "I am a free spirit - no one tells me what to do.",
+            "alignment": "Chaotic"
+          },
+          {
+            "name": "Fairness",
+            "description": "I never target people who can't afford to lose a few coins.",
+            "alignment": "Lawful"
+          },
+          {
+            "name": "Charity",
+            "description": "I distribute the money I acquire to the people who really need it.",
+            "alignment": "Good"
+          },
+          {
+            "name": "Creativity",
+            "description": "I never run the same con twice.",
+            "alignment": "Chaotic"
+          },
+          {
+            "name": "Friendship",
+            "description": "Material goods come and go. Bonds of friendship last forever.",
+            "alignment": "Good"
+          },
+          {
+            "name": "Aspiration",
+            "description": "I'm determined to make something of myself.",
+            "alignment": "Any"
+          }
+        ],
+        "bonds": [
+          "I fleeced the wrong person and must work to ensure that this individual never crosses paths with me or those I care about.",
+          "I owe everything to my mentor - a horrible person who's probably rotting in jail somewhere.",
+          "Somewhere out there, I have a child who doesn't know me. I'm making the world better for him or her.",
+          "I come from a noble family, and one day I'll reclaim my lands and title from those who stole them from me.",
+          "A powerful person killed someone I love. Some day soon, I'll have my revenge.",
+          "I swindled and ruined a person who didn't deserve it. I seek to atone for my misdeeds but might never be able to forgive myself."
+        ],
+        "flaws": [
+          "I can't resist a pretty face.",
+          "I'm always in debt. I spend my ill-gotten gains on decadent luxuries faster than I bring them in.",
+          "I'm convinced that no one could ever fool me the way I fool others.",
+          "I'm too greedy for my own good. I can't resists taking a risk if there's money involved.",
+          "I can't resist swindling people who are more powerful than me.",
+          "I hate to admit it and will hate myself for it, but I'll run and preserve my own hide if the going gets tough."
+        ]
+      },
+      "variant": null
+    },
+    {
+      "name": "Criminal",
+      "description": "You are an experienced criminal with a history of breaking the law. You have spent a lot of time among other criminals and stil have contacts within the criminal underworld. You're far closer than most people to the world of murder, theft, and violence that pervades the underbelly of civilization, and you have survived up to this point by flouting the rules and regulations of society.",
+      "proficiencies": {
+        "skills": ["Deception", "Stealth"],
+        "tools": ["One type of gaming set", "thieves's tools"],
+        "languages": []
+      },
+      "equipment": ["A crowbar", "a set of dark common clothes including a hood", "and a pouch containing 15 gp"],
+      "subBackground": {
+        "name": "Criminal Speciality",
+        "description": "There are many kinds of criminals, and within a thieves' guild or simliar criminal organization, individual members have particular specialties. Even criminals who operate outside of such organizations have strong preferecnes for certain kinds of crimes over others. Choose the role you played in your criminal life, or roll on the table below:",
+        "options": [
+          "Blackmailer",
+          "Burglar",
+          "Enforcer",
+          "Fence",
+          "Highway robber",
+          "Hired Killer",
+          "Pickpocket",
+          "Smuggler"
+        ]
+      },
+      "feature": {
+        "name": "Criminal Contact",
+        "description": "You have a reliable and trustworthy contact who acts as yourliasison to a network of other criminals. You know how to get messages to and from your contact, even over great distances; specfically, you know the local messengers, corrupt caravan masters, and seedy sailors who can deliver messages for you."
+      },
+      "suggestedCharacteristics": "Criminals might seem like villains on the surface, and many of them are villainous to the core. But some have an abundance of endearing, if not redeeming, characteristics. There might be honor among thieves, but criminals rarely show any respect for law or authority.",
+      "personality": {
+        "personalityTraits": [
+          "I always have a plan for what to do when things go wrong.",
+          "I am always calm, no matter what the situation. I never raise my voice or let my emotions control me.",
+          "The first thing I do in a new place is note the locations of everything valuable - or where such things could be hidden.",
+          "I would rather make a new friend than a new enemy.",
+          "I am incredibly slow to trust. Those who seem the fairest often have the most to hide.",
+          "I don't pay attention to the risks in a situation. Never tell me the odds.",
+          "The best way to get me to do something is to tell me I can't do it.",
+          "I blow up at the slightest insult."
+        ],
+        "ideals": [
+          {
+            "name": "Honor",
+            "description": "I don't steal form others in the trade.",
+            "alignment": "Lawful"
+          },
+          {
+            "name": "Freedom",
+            "description": "Chains are meant to be broken, as are those who would forge them.",
+            "alignment": "Chaotic"
+          },
+          {
+            "name": "Charity",
+            "description": "I steal from the wealthy so that I can help people in need.",
+            "alignment": "Good"
+          },
+          {
+            "name": "Greed",
+            "description": "I will do whatever it takes to become wealthy.",
+            "alignment": "Evil"
+          },
+          {
+            "name": "People",
+            "description": "I'm loyal to my friends, not to any ideals, and everyone else can take a trip down the Styx for all I care.",
+            "alignment": "Neutral"
+          },
+          {
+            "name": "Redemption",
+            "description": "There's a spark of good in everyone.",
+            "alignment": "Good"
+          }
+        ],
+        "bonds": [
+          "I'm trying to pay off an old debt I owe to a generous benefactor.",
+          "My ill-gotten gains go to support my family.",
+          "Something important was taken from me, and I aim to steal it back.",
+          "I will become the greatest thief that ever lived.",
+          "I'm guilty of a terrible crime. I hope I can redeem myself for it.",
+          "Someone I loved died becasue of a mistake I made. That will never happen again."
+        ],
+        "flaws": [
+          "When I see something valuable, I can't think about anything but how to steal it.",
+          "When faced with a choice between money and my freinds, I usually choose the money.",
+          "If there's a plan, I'll forget it. If I don't forget it, I'll ignore it.",
+          "I have a 'tell', that reveals when I'm lying.",
+          "I turn tail and run when things look bad.",
+          "An innocent person is in prison for a crime that I committed. I'm okay with that."
+        ]
+      },
+      "variant": {
+        "name": "Spy",
+        "description": "Although your capabilities are not much different from those of a burglar or smuggler, you learned and practiced them in a very different context: as an espionage agent. You might ahve been an officially sanctioned agent of the crown,  or perhaps you sold the secrets you uncovered to the highest bidder."
+      }
+    }
+  ]
+}

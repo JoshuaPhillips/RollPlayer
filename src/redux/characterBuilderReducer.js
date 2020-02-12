@@ -1,5 +1,5 @@
 const initialState = {
-  currentBuildStage: "race-selection",
+  currentBuildStage: "background-selection",
   canContinue: false,
   selectedRace: null,
   selectedClass: null,

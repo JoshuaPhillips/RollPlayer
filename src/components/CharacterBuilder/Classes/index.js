@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ClassCard from "./ClassCard";
 import { connect } from "react-redux";
 
-import data from "../../../data.json";
+import { classes } from "../../../data/classes.json";
 import SectionHeader from "../shared/SectionHeader";
 
 const ClassSelection = () => {
@@ -30,7 +30,7 @@ const ClassSelection = () => {
 
       <div className='overflow-x-auto px-4 py-4'>
         <div className='inline-flex'>
-          {data.classes.map(currentClass => {
+          {classes.map(currentClass => {
             return (
               <ClassCard
                 key={`staticClass__${currentClass.name.toLowerCase()}`}

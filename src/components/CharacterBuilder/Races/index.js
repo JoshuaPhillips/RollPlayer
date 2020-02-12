@@ -1,7 +1,7 @@
 import React from "react";
 import RaceCard from "./RaceCard";
 
-import data from "../../../data.json";
+import { races } from "../../../data/races.json";
 import SectionHeader from "../shared/SectionHeader";
 
 const RaceSelection = () => {
@@ -32,7 +32,7 @@ const RaceSelection = () => {
 
       <div className='overflow-x-auto px-4 py-4'>
         <div className='inline-flex'>
-          {data.races.map(race => {
+          {races.map(race => {
             return <RaceCard key={race.id} race={race} />;
           })}
         </div>

@@ -80,7 +80,7 @@ const ClassCardSection = props => {
   const { title, children, borderColor, customClasses } = props;
 
   return (
-    <div className={`panel ${borderColor} ${customClasses}`}>
+    <div className={["panel", borderColor, customClasses ? customClasses : ""].join(" ")}>
       <div className={`panel relative py-2 text-center shadow-lg ml-2 -mt-6 w-1/2 uppercase ${borderColor}`}>
         <h4 className='font-semibold tracking-wide'>{title}</h4>
       </div>

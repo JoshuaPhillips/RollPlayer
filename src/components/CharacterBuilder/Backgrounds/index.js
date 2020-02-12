@@ -1,5 +1,8 @@
 import React from "react";
 import SectionHeader from "../shared/SectionHeader";
+import BackgroundCard from "./BackgroundCard";
+
+import { backgrounds } from "../../../data/backgrounds.json";
 
 const BackgroundSelection = () => {
   return (
@@ -23,11 +26,19 @@ const BackgroundSelection = () => {
           character concept.
         </p>
         <p className='px-4 pt-4'>
-          A background gives your character a background feature (a general benefit) and proficiency in two skills,
-          proficiency with certain kinds of tools. Your characters background information and additional proficiencies
-          will be automatically included in your character summary at the end.
+          A background gives your character a background feature (a general benefit) and proficiency in two skills, and
+          it might also give you additional languages or proficiency with certain kinds of tools. Your characters
+          background information and additional proficiencies will be automatically included in your character summary
+          at the end.
         </p>
       </SectionHeader>
+      <div className='overflow-x-auto px-4 py-4 border border-red-800'>
+        <div className='inline-flex'>
+          {backgrounds.map(background => {
+            return <BackgroundCard background={background} />;
+          })}
+        </div>
+      </div>
     </section>
   );
 };
